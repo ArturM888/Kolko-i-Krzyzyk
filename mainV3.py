@@ -46,52 +46,15 @@ pygame.display.flip()
 
 
 
-running = True
-while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-
-        if event.type == pygame.MOUSEBUTTONUP:
-            pos = pygame.mouse.get_pos()
-            if first_choice.collidepoint(pos):
-                player = "X"
-                running = False
-            else:
-                if second_choice.collidepoint(pos):
-                    player = "O"
-                    running = False
-    pygame.display.update()
-
-screen.fill((65 ,105 ,225))
-
-# tworzenie kwadratów do wpisywania znaków
-first = pygame.draw.rect(screen, (255, 255, 255), (25, 25, 150, 150))
-second = pygame.draw.rect(screen, (255, 255, 255), (200, 25, 150, 150))
-third = pygame.draw.rect(screen, (255, 255, 255), (375, 25, 150, 150))
-
-fourth = pygame.draw.rect(screen, (255, 255, 255), (25, 200, 150, 150))
-fifth = pygame.draw.rect(screen, (255, 255, 255), (200, 200, 150, 150))
-sixth = pygame.draw.rect(screen, (255, 255, 255), (375, 200, 150, 150))
-
-seventh= pygame.draw.rect(screen, (255, 255, 255), (25, 375, 150, 150))
-eighth= pygame.draw.rect(screen, (255, 255, 255), (200, 375, 150, 150))
-ninth= pygame.draw.rect(screen, (255, 255, 255), (375, 375, 150, 150))
 
 
-first_open = True
-second_open = True
-third_open = True
-fourth_open = True
-fifth_open = True
-sixth_open = True
-seventh_open = True
-eighth_open = True
-ninth_open = True
+
+
+runningFirstWindow = True
 
 running = True
 
-board = Board.Board(player)
+
 
 
 while running:
@@ -104,11 +67,63 @@ while running:
             running = False
 
 
-
-
-
         if event.type == pygame.MOUSEBUTTONUP:
             pos = pygame.mouse.get_pos()
+
+            if runningFirstWindow:
+                if first_choice.collidepoint(pos):
+                    player = "X"
+                    board = Board.Board(player)
+                    runningFirstWindow = False
+                    screen.fill((65, 105, 225))
+                    first = pygame.draw.rect(screen, (255, 255, 255), (25, 25, 150, 150))
+                    second = pygame.draw.rect(screen, (255, 255, 255), (200, 25, 150, 150))
+                    third = pygame.draw.rect(screen, (255, 255, 255), (375, 25, 150, 150))
+
+                    fourth = pygame.draw.rect(screen, (255, 255, 255), (25, 200, 150, 150))
+                    fifth = pygame.draw.rect(screen, (255, 255, 255), (200, 200, 150, 150))
+                    sixth = pygame.draw.rect(screen, (255, 255, 255), (375, 200, 150, 150))
+
+                    seventh = pygame.draw.rect(screen, (255, 255, 255), (25, 375, 150, 150))
+                    eighth = pygame.draw.rect(screen, (255, 255, 255), (200, 375, 150, 150))
+                    ninth = pygame.draw.rect(screen, (255, 255, 255), (375, 375, 150, 150))
+
+                    first_open = True
+                    second_open = True
+                    third_open = True
+                    fourth_open = True
+                    fifth_open = True
+                    sixth_open = True
+                    seventh_open = True
+                    eighth_open = True
+                    ninth_open = True
+                else:
+                    if second_choice.collidepoint(pos):
+                        player = "O"
+                        board = Board.Board(player)
+                        runningFirstWindow = False
+                        screen.fill((65, 105, 225))
+                        first = pygame.draw.rect(screen, (255, 255, 255), (25, 25, 150, 150))
+                        second = pygame.draw.rect(screen, (255, 255, 255), (200, 25, 150, 150))
+                        third = pygame.draw.rect(screen, (255, 255, 255), (375, 25, 150, 150))
+
+                        fourth = pygame.draw.rect(screen, (255, 255, 255), (25, 200, 150, 150))
+                        fifth = pygame.draw.rect(screen, (255, 255, 255), (200, 200, 150, 150))
+                        sixth = pygame.draw.rect(screen, (255, 255, 255), (375, 200, 150, 150))
+
+                        seventh = pygame.draw.rect(screen, (255, 255, 255), (25, 375, 150, 150))
+                        eighth = pygame.draw.rect(screen, (255, 255, 255), (200, 375, 150, 150))
+                        ninth = pygame.draw.rect(screen, (255, 255, 255), (375, 375, 150, 150))
+
+                        first_open = True
+                        second_open = True
+                        third_open = True
+                        fourth_open = True
+                        fifth_open = True
+                        sixth_open = True
+                        seventh_open = True
+                        eighth_open = True
+                        ninth_open = True
 
             if first.collidepoint(pos) and first_open:
                 if board.getPlayer() == "X":
@@ -211,11 +226,8 @@ while running:
                     board.putToBoard(2, 2)
                 ninth_open = False
 
-
-
-
-
+ 
     pygame.display.update()
+
+
 pygame.quit()
-
-
